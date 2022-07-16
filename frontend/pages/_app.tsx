@@ -1,21 +1,15 @@
-import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import type { AppProps } from "next/app";
-import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { default as NextHead } from "next/head";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import type { AppProps } from "next/app";
+import "../styles/globals.css";
+import { Layout } from "@layouts";
 
-const { chains, provider, webSocketProvider } = configureChains(
-  [
-    chain.mainnet,
-    chain.polygon,
-    chain.optimism,
-    chain.arbitrum,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-      : []),
-  ],
+const { chains, provider } = configureChains(
+  [chain.polygonMumbai],
   [
     alchemyProvider({
       // This is Alchemy's default API key.
@@ -35,14 +29,24 @@ const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   provider,
-  webSocketProvider,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />
+        <NextHead>
+          <base href="/" />
+          <meta charSet="utf-8" />
+          <title>BlocEvent - A decentralized ticket app</title>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"
+          />
+        </NextHead>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </RainbowKitProvider>
     </WagmiConfig>
   );
