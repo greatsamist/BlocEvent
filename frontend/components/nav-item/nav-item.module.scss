@@ -1,0 +1,16 @@
+.nav {
+  align-items: center;
+
+  & ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & li {
+      list-style: none;
+      margin-right: 3rem;
+      font-family: inherit;
+      font-size: 1.4rem;
+    }
+  }
+}
