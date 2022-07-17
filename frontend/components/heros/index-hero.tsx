@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./index-hero.module.scss";
 import btn from "../../styles/button.module.scss";
+import Link from "next/link";
 
 export const IndexHero: FC = () => {
   return (
@@ -14,7 +15,9 @@ export const IndexHero: FC = () => {
             Auto mint with PAOP integration for all attendee
           </p>
           <div className={styles.button}>
-            <button className={btn.btn}>Create Event</button>
+            <Link href="./create">
+              <button className={btn.btn}>Create Event</button>
+            </Link>
             <button className={btn.btn}>Buy Ticket</button>
           </div>
         </div>

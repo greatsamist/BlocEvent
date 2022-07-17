@@ -1,5 +1,5 @@
 .container {
-  margin: 8rem auto;
+  margin: 12rem auto 8rem;
   width: 90%;
 }
 
@@ -9,7 +9,7 @@
 }
 
 .content {
-  margin-top: 4rem;
+  margin-top: 6rem;
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -33,6 +33,7 @@
   }
   &__para {
     margin-top: 1rem;
+    line-height: 1.6;
     font-size: 1.5rem;
   }
 }
