@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <NextHead>
           <base href="/" />
           <meta charSet="utf-8" />
-          <title>BlocEvent - A decentralized ticket app</title>
+          <title>BlocEvent - A decentralized events app</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"
