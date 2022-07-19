@@ -20,10 +20,10 @@ const Create: NextPage = () => {
         <title>Create Event | BlocEvent - A decentralized events app</title>
       </NextHead>
       <CreateHero />
-      {/* <CreateForm
+      <CreateForm
         onError={(error: Error) => onCreateError(error)}
         onSuccess={(data: TransactionReceipt) => onCreateSuccess(data)}
-      /> */}
+      />
     </Fragment>
   );
 };

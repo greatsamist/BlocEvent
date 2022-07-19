@@ -5,11 +5,11 @@
     rgb(0, 0, 0),
     rgba(140, 25, 228, 0.4)
   );
+  min-height: calc(100vh - 80px);
 }
 .inner {
   margin: 0 auto 8rem;
   padding-top: 2rem;
-  min-height: calc(100vh - 80px);
   width: 80%;
   display: flex;
   justify-content: center;
@@ -48,29 +48,48 @@
   height: 50rem;
 }
 
+@media only screen and (max-width: 1400px) {
+  .inner {
+    width: 90%;
+  }
+
+  .heading {
+    font-size: 4rem;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .inner {
     width: 90%;
   }
   .innerLeft {
+    padding-top: 20rem;
     width: 100%;
   }
   .innerRight {
     display: none;
   }
   .heading {
-    font-size: 5.5rem;
+    font-size: 4rem;
   }
 }
 
 @media only screen and (max-width: 900px) {
   .innerLeft {
+    // padding-top: 5rem;
     width: 100%;
   }
   .innerRight {
     display: none;
   }
   .heading {
-    font-size: 5rem;
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .innerLeft {
+    padding-top: 5rem;
+    width: 100%;
   }
 }
