@@ -1,5 +1,5 @@
 import { FC, Fragment, useState } from "react";
-import { Image2, Ticket, TicketStar } from "react-iconly";
+import { ChevronDown, Image2, Ticket, TicketStar } from "react-iconly";
 import styles from "./dashboard-nav-item.module.scss";
 
 export let DashboardNav: string;
@@ -29,7 +29,7 @@ export const DashboardNavItem: FC<DashboardNavItemProps> = (
                 primaryColor="currentColor"
                 style={{ verticalAlign: "middle", marginRight: "8px" }}
               />
-              Ticket Sold
+              Withdraw Earnings
             </li>
             <li>
               <Ticket
@@ -37,15 +37,7 @@ export const DashboardNavItem: FC<DashboardNavItemProps> = (
                 primaryColor="currentColor"
                 style={{ verticalAlign: "middle", marginRight: "8px" }}
               />
-              Ticket Sold
-            </li>
-            <li>
-              <Ticket
-                set="curved"
-                primaryColor="currentColor"
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
-              />
-              Ticket Sold
+              Airdrop POAP
             </li>
           </ul>
           <li onClick={() => setSec("AuctionTicket")}>
@@ -63,6 +55,33 @@ export const DashboardNavItem: FC<DashboardNavItemProps> = (
               style={{ verticalAlign: "middle", marginRight: "8px" }}
             />
             POAP
+            <ChevronDown
+              set="bold"
+              primaryColor="currentColor"
+              size={15}
+              style={{ verticalAlign: "middle", marginLeft: "100px" }}
+            />
+          </li>
+
+          <li className={styles.sub} onClick={() => setSec("poap")}>
+            <p>
+              <Image2
+                set="curved"
+                primaryColor="currentColor"
+                style={{ verticalAlign: "middle", marginRight: "8px" }}
+              />
+              My POAP
+            </p>
+          </li>
+          <li className={styles.sub} onClick={() => setSec("poap")}>
+            <p>
+              <Image2
+                set="curved"
+                primaryColor="currentColor"
+                style={{ verticalAlign: "middle", marginRight: "8px" }}
+              />
+              Mint POAP
+            </p>
           </li>
         </ul>
       </nav>

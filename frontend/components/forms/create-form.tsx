@@ -6,11 +6,6 @@ import { useContractWrite, useWaitForTransaction } from "wagmi";
 import styles from "./create-form.module.scss";
 import type { TransactionReceipt } from "@ethersproject/providers";
 
-const contractConfig = {
-  addressOrName: BlocAddress,
-  contractInterface: blocContractABI,
-};
-
 export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
   const { onError, onSuccess } = props;
 
