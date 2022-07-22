@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
-import { DashboardNavItem } from "@components/nav-item";
-import { AuctionTicket, MyEvents } from "@components/sections";
+import { AuctionTicket, DashboardNavItem, MyEvents } from "@components";
 import { NextPage } from "next";
 import { default as NextHead } from "next/head";
 import styles from "../styles/dashboard.module.scss";

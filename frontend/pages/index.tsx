@@ -1,6 +1,5 @@
 import { Fragment } from "react";
-import { IndexHero } from "@components/heros";
-import { HowItWorksSection, PartnerSection } from "@components/sections";
+import { HowItWorksSection, IndexHero, PartnerSection } from "@components";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {

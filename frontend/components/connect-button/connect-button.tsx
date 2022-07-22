@@ -2,7 +2,7 @@ import { FC, Fragment } from "react";
 import { useMediaQuery } from "@hooks";
 import { ConnectButton as RainbowButton } from "@rainbow-me/rainbowkit";
 import { Wallet } from "react-iconly";
-import btn from "../../styles/button.module.scss";
+// import btn from "../../styles/button.module.scss";
 import styles from "./connect-button.module.scss";
 
 export const ConnectButton: FC<ConnectButtonProps> = (
@@ -38,7 +38,7 @@ export const ConnectButton: FC<ConnectButtonProps> = (
                 if (!mounted || !account || !chain) {
                   return (
                     <button
-                      className={btn.btn}
+                      className={styles.btn}
                       onClick={openConnectModal}
                       type="button"
                     >
