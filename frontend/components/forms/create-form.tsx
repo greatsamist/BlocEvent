@@ -33,6 +33,14 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     addressOrName: BlocAddress,
     contractInterface: blocContractABI,
     functionName: "createEvent",
+    onSettled: async (_, error) => {
+      if (error) {
+        const reason = (error as unknown as { reason: string }).reason;
+        const reasonString = reason.split(":")[1];
+        setErrorReason(reasonString);
+        await onError(error);
+      }
+    },
   });
 
   const waitCreation = useWaitForTransaction({
@@ -46,10 +54,10 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
   const registerHandler = async (data: CreationFormData) => {
     if (isValid) {
       const { participantsNumber, ticketPrice } = data;
-      console.log(participantsNumber, ticketPrice);
+
       try {
         await creation.writeAsync({
-          args: [3, 2],
+          args: [participantsNumber, ticketPrice],
         });
       } catch (error) {
         return;
@@ -64,44 +72,51 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
   return (
     <Fragment>
       <div className={styles.container}>
-        <h1 className={styles.heading}>Register Form</h1>
-        <p className={styles.heading__para}>Fill details appropriately</p>
+        <div className={styles.head}>
+          <h1 className={styles.heading}>Event information</h1>
+        </div>
         <form className={styles.form} onSubmit={handleSubmit(registerHandler)}>
           {/* /* === eventName === */}
-          <input
-            className={
-              errors.eventName ? styles.form__error : styles.form__input
-            }
-            id="eventName"
-            type="text"
-            placeholder="Event name"
-            {...(register("eventName"),
-            { required: true, minLength: 1, maxLength: 32 })}
-          />
+          <div className={styles.inputContainer}>
+            <input
+              className={styles.inputContainer__input}
+              id="eventName"
+              type="text"
+              {...register("eventName", {
+                required: true,
+                minLength: 1,
+                maxLength: 32,
+              })}
+            />
+            <label htmlFor="eventName" className={styles.inputContainer__label}>
+              Event Name
+            </label>
+          </div>
           {/* /* === participantsNumber === */}
-          <input
-            className={
-              errors.participantsNumber
-                ? styles.form__error
-                : styles.form__input
-            }
-            id="participantsNumber"
-            type="number"
-            placeholder="Maximum number of participants"
-            {...(register("participantsNumber"), { required: true, min: 1 })}
-          />
+          <div className={styles.inputContainer}>
+            <input
+              className={styles.inputContainer__input}
+              id="participantsNumber"
+              type="number"
+              {...register("participantsNumber", { required: true, min: 1 })}
+            />
+            <label htmlFor="eventName" className={styles.inputContainer__label}>
+              Maximum number of participants
+            </label>
+          </div>
           {/* /* === ticketPrice === */}
-          <input
-            className={
-              errors.ticketPrice
-                ? `${styles.form__error}`
-                : `${styles.form__input}`
-            }
-            id="ticketPrice"
-            type="number"
-            placeholder="Ticket Price"
-            {...(register("ticketPrice"), { required: true, min: 0 })}
-          />
+          <div className={styles.inputContainer}>
+            <input
+              className={styles.inputContainer__input}
+              id="ticketPrice"
+              type="number"
+              {...register("ticketPrice", { required: true, min: 0 })}
+            />
+            <label htmlFor="eventName" className={styles.inputContainer__label}>
+              Ticket Price
+            </label>
+          </div>
+
           <button type="submit">
             {isLoading ? (
               <MoonLoader size={30} />

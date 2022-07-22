@@ -7,7 +7,7 @@ export const CreateHero: FC = () => {
       <div className={styles.inner}>
         <div className={styles.innerLeft}>
           <h1 className={styles.heading}>
-            Create your <span>event</span> with our custom templates that works
+            Create your event with our <span>custom templates</span> that works
             for all
           </h1>
           <p className={styles.heading__sub}>

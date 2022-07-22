@@ -1,84 +1,28 @@
 .container {
   width: 90%;
+  margin: 0 auto 8rem;
+}
+
+.head {
+  margin-bottom: 4rem;
 }
 
 .heading {
   text-align: center;
   font-size: 3rem;
+
+  &__para {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+  }
 }
 
 .form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5%;
-
-  &__create {
-    flex: 0 0 55%;
-    padding: 2rem;
-    background: rgba(42, 37, 101, 0.4);
-    border-radius: 5px;
-  }
-  &__head {
-    font-size: 1.4rem;
-    margin-bottom: 2.5rem;
-  }
-
-  &__input {
-    font-family: inherit;
-    font-size: 1.2rem;
-    width: 100%;
-    padding: 1rem;
-    background-color: transparent;
-    border-style: none;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-    margin-bottom: 1.3rem;
-
-    &:hover,
-    &:focus {
-      background-color: rgb(145, 126, 255, 0.3);
-    }
-
-    &:focus,
-    &:active {
-      border: 1px solid rgb(145, 126, 255, 0.3);
-    }
-  }
-
-  &__option {
-    font-family: inherit;
-    // font-size: inherit;
-    width: 100%;
-    padding: 1rem;
-  }
-
-  &__desc {
-    flex: 0 0 40%;
-
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__full {
-    color: #fff;
-    font-family: inherit;
-    padding: 2rem;
-    height: 40rem;
-    border-style: none;
-    margin-bottom: 2rem;
-    border-radius: 3px;
-    background: rgba(42, 37, 101, 0.4);
-  }
-
-  &__short {
-    color: #fff;
-    font-family: inherit;
-    padding: 2rem;
-    height: 12rem;
-    border-radius: 3px;
-    background: rgba(42, 37, 101, 0.4);
-  }
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  // width: 50%;
 
   &__btn {
     margin: auto;
@@ -96,5 +40,43 @@
     border: 1px solid rgba(255, 0, 0, 0.3);
     border-radius: 3px;
     margin-bottom: 1.3rem;
+  }
+}
+
+.inputContainer {
+  position: relative;
+  margin-bottom: 2.5rem;
+
+  &__label {
+    font-family: inherit;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 1.3rem;
+    color: #fff;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__input {
+    font-family: inherit;
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    width: 100%;
+    padding: 8px 0 5px 0;
+    font-size: 1.5rem;
+    color: #fff;
+
+    &:focus {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #e74c3c;
+    }
+    &:focus ~ label,
+    &:valid ~ label {
+      top: -12px;
+      font-size: 1rem;
+    }
   }
 }
