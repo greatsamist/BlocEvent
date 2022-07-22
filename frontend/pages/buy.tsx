@@ -1,7 +1,6 @@
-import {} from "@components";
+import { Fragment } from "react";
 import { NextPage } from "next";
 import { default as NextHead } from "next/head";
-import { Fragment } from "react";
 
 const Buy: NextPage = () => {
   return (

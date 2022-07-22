@@ -1,2 +1,2 @@
-export * from "./how-it-works";
-export * from "./partners";
+export * from "./index-sections";
+export * from "./dashboard-sections";

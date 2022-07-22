@@ -1,12 +1,12 @@
-import styles from "./how-it-works.module.scss";
-import { Ticket } from "react-iconly";
 import { FC, Fragment } from "react";
+import { Ticket } from "react-iconly";
+import styles from "./how-it-works.module.scss";
 
 export const HowItWorksSection: FC = () => {
   return (
     <Fragment>
       <div className={styles.container}>
-        <h1 className={styles.heading}>How it works</h1>
+        <h2 className={styles.heading}>How it works</h2>
         <div className={styles.content}>
           <div className={styles.content__row}>
             <div className={styles.content__header}>
