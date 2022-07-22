@@ -1,9 +1,9 @@
 import { Fragment, useState } from "react";
-import styles from "../styles/dashboard.module.scss";
-import { AuctionTicket, MyEvents } from "@components/sections";
 import { DashboardNavItem } from "@components/nav-item";
+import { AuctionTicket, MyEvents } from "@components/sections";
 import { NextPage } from "next";
 import { default as NextHead } from "next/head";
+import styles from "../styles/dashboard.module.scss";
 
 const Dashboard: NextPage = () => {
   const [sec, setSec] = useState("");
@@ -18,15 +18,15 @@ const Dashboard: NextPage = () => {
       </NextHead>
       <div className={styles.container}>
         <div className={styles.content}>
-        <div>
-          <DashboardNavItem func={whatSection} />
-        </div>
+          <div>
+            <DashboardNavItem func={whatSection} />
+          </div>
 
-        <div className={styles.dashSection}>
-          {sec === "MyEvents" ? <MyEvents /> : null}
-          {sec === "AuctionTicket" ? <AuctionTicket /> : null}
+          <div className={styles.dashSection}>
+            {sec === "MyEvents" ? <MyEvents /> : null}
+            {sec === "AuctionTicket" ? <AuctionTicket /> : null}
+          </div>
         </div>
-      </div>
       </div>
     </Fragment>
   );

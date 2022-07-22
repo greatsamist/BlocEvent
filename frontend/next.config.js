@@ -2,23 +2,26 @@
  * Next Config
  * @type {import('next').NextConfig}
  */
- const nextConfig = {
+const nextConfig = {
   compress: true,
   swcMinify: false,
   reactStrictMode: true,
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   compiler: {
-    styledComponents: true
+    styledComponents: true,
   },
   i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US',
-    localeDetection: true
+    locales: ["en-US"],
+    defaultLocale: "en-US",
+    localeDetection: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   images: {
-    domains: []
-  }
+    domains: [],
+  },
 };
 
 module.exports = nextConfig;

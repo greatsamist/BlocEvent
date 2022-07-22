@@ -1,6 +1,6 @@
-import styles from "./how-it-works.module.scss";
-import { Ticket } from "react-iconly";
 import { FC, Fragment } from "react";
+import { Ticket } from "react-iconly";
+import styles from "./how-it-works.module.scss";
 
 export const HowItWorksSection: FC = () => {
   return (

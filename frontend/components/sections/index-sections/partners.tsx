@@ -1,5 +1,5 @@
-import styles from "./partners.module.scss";
 import { FC, Fragment } from "react";
+import styles from "./partners.module.scss";
 
 export const PartnerSection: FC = () => {
   return (

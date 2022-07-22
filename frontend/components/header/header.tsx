@@ -1,8 +1,8 @@
-import styles from "./header.module.scss";
-import { NavItem } from "@components/nav-item";
-import { ConnectButton } from "@components/connect-button";
 import { FC } from "react";
+import { ConnectButton } from "@components/connect-button";
+import { NavItem } from "@components/nav-item";
 import Link from "next/link";
+import styles from "./header.module.scss";
 
 export const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const {} = props;

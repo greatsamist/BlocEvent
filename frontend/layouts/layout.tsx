@@ -1,5 +1,5 @@
-import { Footer, Header } from "@components";
 import { FC, Fragment, ReactNode } from "react";
+import { Footer, Header } from "@components";
 
 export const Layout: FC<LayoutProps> = (props: LayoutProps) => {
   const { children } = props;

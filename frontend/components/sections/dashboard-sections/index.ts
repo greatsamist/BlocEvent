@@ -1,2 +1,2 @@
-export * from './my-events';
-export * from './auction-ticket';
+export * from "./auction-ticket";
+export * from "./my-events";

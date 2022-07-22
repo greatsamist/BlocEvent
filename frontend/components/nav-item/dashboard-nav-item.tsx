@@ -1,6 +1,6 @@
-import styles from "./dashboard-nav-item.module.scss";
-import { FC, useState, Fragment } from "react";
+import { FC, Fragment, useState } from "react";
 import { Image2, Ticket, TicketStar } from "react-iconly";
+import styles from "./dashboard-nav-item.module.scss";
 
 export let DashboardNav: string;
 

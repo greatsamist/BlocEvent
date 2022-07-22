@@ -1,8 +1,9 @@
+import { Layout } from "@layouts";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
+  darkTheme,
   getDefaultWallets,
   RainbowKitProvider,
-  darkTheme,
 } from "@rainbow-me/rainbowkit";
 import { default as NextHead } from "next/head";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
@@ -10,7 +11,6 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import type { AppProps } from "next/app";
 import "../styles/globals.scss";
-import { Layout } from "@layouts";
 
 const { chains, provider } = configureChains(
   [chain.polygonMumbai],

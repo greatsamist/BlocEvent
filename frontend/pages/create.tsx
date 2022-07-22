@@ -1,7 +1,7 @@
+import { Fragment } from "react";
 import { CreateForm, CreateHero } from "@components";
 import { NextPage } from "next";
 import { default as NextHead } from "next/head";
-import { Fragment } from "react";
 import type {
   TransactionReceipt,
   TransactionResponse,

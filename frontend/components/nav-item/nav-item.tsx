@@ -1,7 +1,7 @@
-import Link from "next/link";
-import styles from "./nav-item.module.scss";
 import { FC } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import styles from "./nav-item.module.scss";
 
 export const NavItem: FC = () => {
   const router = useRouter();
