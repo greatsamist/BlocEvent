@@ -75,7 +75,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     <Fragment>
       <div className={styles.container}>
         <div className={styles.head}>
-          <h1 className={styles.heading}>Event information</h1>
+          <h2 className={styles.heading}>Event information</h2>
         </div>
         <form className={styles.form} onSubmit={handleSubmit(registerHandler)}>
           {/* /* === eventName === */}

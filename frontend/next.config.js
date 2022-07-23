@@ -25,7 +25,6 @@ const nextConfig = {
   images: {
     loader: "akamai",
     path: "",
-    domains: [],
   },
   trailingSlash: true,
   assetPrefix: isProd ? "https://blocevent-r5euy.spheron.app/" : "",
