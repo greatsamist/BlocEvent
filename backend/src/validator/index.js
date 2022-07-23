@@ -9,7 +9,6 @@ export const EventValidator = (event) => {
         startTime: Joi.string().required().label('Start Time'), 
         endTime: Joi.string().required().label('End Time'),
         description: Joi.string().required().label('Description'),
-        shortDescription: Joi.string().required().label('SHort Description'),
         organizers: Joi.string().required().label('Organizers'),
         participantsNumber: Joi.number().required().label('Participants'),
         ticketPrice: Joi.number().required().label('Ticket price')
