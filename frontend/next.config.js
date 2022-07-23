@@ -2,6 +2,9 @@
  * Next Config
  * @type {import('next').NextConfig}
  */
+
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig = {
   compress: true,
   swcMinify: false,
@@ -20,8 +23,12 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    loader: "akamai",
+    path: "",
     domains: [],
   },
+  trailingSlash: true,
+  assetPrefix: isProd ? "https://blocevent-r5euy.spheron.app/" : "",
 };
 
 module.exports = nextConfig;
