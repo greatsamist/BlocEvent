@@ -162,7 +162,7 @@ router.get('/query', async (req, res, next) => {
         const entries = resultsToObjects(events)
         res.status(200).json({
             statusCode: 200,
-            message: "All events fetched",
+            message: "Event fetched",
             data: entries
         })
 

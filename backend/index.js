@@ -1,10 +1,4 @@
-// const express = require('express');
-// const app = express();
-// const cors = require('cors');
-// const compression = require('compression');
-// const createError = require('http-errors');
-// const dotenv = require('dotenv');
-
+import createError from 'http-errors'
 import cors from 'cors';
 import compression from 'compression';
 import express from 'express';
@@ -57,4 +51,4 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(PORT, () => console.log(`Clubry backend server started on port http://0.0.0.0.:${PORT}`))
+app.listen(PORT, () => console.log(`BlockEvents backend server started on port http://0.0.0.0.:${PORT}`))
