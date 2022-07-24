@@ -3,7 +3,7 @@
  * @type {import('next').NextConfig}
  */
 
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   images: {
@@ -11,7 +11,7 @@ const nextConfig = {
     path: "",
   },
   trailingSlash: true,
-  assetPrefix: isProd ? "https://blocevent-r5euy.spheron.app/" : "",
+  // assetPrefix: isProd ? "https://blocevent-r5euy.spheron.app/" : "",
 };
 
 module.exports = nextConfig;

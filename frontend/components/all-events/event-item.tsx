@@ -1,22 +1,102 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useMemo, useState } from "react";
+import { BlocAddress, blocContractABI } from "@lib";
+import { MoonLoader } from "react-spinners";
+import { useContractWrite, useWaitForTransaction } from "wagmi";
 import styles from "./event-item.module.scss";
+import type { TransactionReceipt } from "@ethersproject/providers";
 
 export const EventItem: FC<eventArr> = ({
-  id,
+//   id,
   eventName,
   organizers,
   eventFile,
+  eventDate,
+  ticketPrice,
+  description,
+  startTime,
+  endTime,
 }: eventArr) => {
+  const [errorReason, setErrorReason] = useState<string | undefined>(undefined);
+
+  const buyTicket = useContractWrite({
+    addressOrName: BlocAddress,
+    contractInterface: blocContractABI,
+    functionName: "buyTicket",
+    onSettled: async (_, error) => {
+      if (error) {
+        const reason = (error as unknown as { reason: string }).reason;
+        const reasonString = reason.split(":")[1];
+        setErrorReason(reasonString);
+      }
+    },
+  });
+
+  const waitBuyTicket = useWaitForTransaction({
+    wait: buyTicket.data?.wait,
+    hash: buyTicket.data?.hash,
+    onSuccess: async (data: TransactionReceipt) => {
+		console.log(data)
+	},
+  });
+
+  const buyTicketHandler = async () => {
+    try {
+      await buyTicket.writeAsync({
+        args: [0],
+      });
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+  };
+
+  const isLoading = useMemo<boolean>(() => {
+    return Boolean(buyTicket.isLoading || waitBuyTicket.isLoading);
+  }, [buyTicket.isLoading, waitBuyTicket.isLoading]);
+
   const image = eventFile.replace("ipfs://", "https://ipfs.io/ipfs/");
+
+  function fee() {
+    if (ticketPrice === 0) {
+      return "Free";
+    } else {
+      return ticketPrice + " Matic";
+    }
+  }
 
   return (
     <Fragment>
-     
-        <li className={styles.list}>{id}</li>
-        <li>{eventName}</li>
-        <li>{organizers}</li>
-        <img src={image} alt="event image" />
-      
+      <li>
+        <div className={styles.card}>
+          <img className={styles.card__img} src={image} alt="event image" />
+          <div className={styles.card__content}>
+            <h3>{eventName}</h3>
+            <h3>
+              Organized by: <span>{organizers}</span>
+            </h3>
+            <p>{description}</p>
+            <p>Date: {eventDate}</p>
+            <p>Start Time: {startTime}</p>
+            <p>End Time: {endTime}</p>
+            <p>Fee: {fee()}</p>
+            <div className={styles.card__button}>
+              <button
+                onClick={() => {
+                  buyTicketHandler();
+                }}
+              >
+                {isLoading ? (
+                  <MoonLoader size={30} />
+                ) : errorReason ? (
+                  errorReason
+                ) : (
+                  "Purchase Ticket"
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
     </Fragment>
   );
 };
