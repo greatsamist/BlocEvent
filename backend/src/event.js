@@ -50,7 +50,7 @@ router.post("/", upload.single('image'), async (req, res, next) => {
 
         const imageURI = `ipfs://${cid}/${req.file.originalname}`
       
-        const createDocument = await tableLand.write(`INSERT INTO blockevents_80001_502 (id, eventName, eventType, category, eventDate, startTime, endTime, description, organizers, participantsNumber, ticketPrice, eventId, eventFile) 
+        const createDocument = await tableLand.write(`INSERT INTO blockevents_80001_504 (id, eventName, eventType, category, eventDate, startTime, endTime, description, organizers, participantsNumber, ticketPrice, eventId, eventFile) 
         VALUES ('${value.eventName.toLowerCase()}', '${value.eventName}' , '${value.eventType}', '${value.category}', '${value.eventDate}', '${value.startTime}', '${value.endTime}', '${value.description}', '${value.organizers}', ${Number(value.participantsNumber)}, ${Number(value.ticketPrice)}, '${value.eventId}', '${imageURI}')`);
         
         /**upload and mint nft to address */
