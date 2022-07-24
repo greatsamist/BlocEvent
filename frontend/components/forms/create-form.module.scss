@@ -22,8 +22,9 @@
   margin-top: 8rem;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 5%;
+  gap: 3rem;
 
   &__btn {
     margin: auto;
@@ -46,7 +47,7 @@
 
 .inputContainer {
   margin-top: 2rem;
-  width: 45%;
+  width: 46%;
   position: relative;
   margin-bottom: 2.5rem;
 
@@ -77,8 +78,8 @@
       border-bottom: 1px solid #e74c3c;
     }
   }
-  &__input:focus + &__label,
-  &__input:valid + &__label {
+  &__input:focus ~ label,
+  &__input:valid ~ label {
     top: -12px;
     font-size: 1.1rem;
   }

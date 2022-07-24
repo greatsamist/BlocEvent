@@ -40,13 +40,15 @@ export const NavItem: FC = () => {
             Create Event
           </li>
         </Link>
-        <Link href="/buy">
+        <Link href="/events">
           <li
             className={
-              router.asPath === "/buy" ? styles.nav__liActive : styles.nav__li
+              router.asPath === "/events"
+                ? styles.nav__liActive
+                : styles.nav__li
             }
           >
-            Buy Tickets
+            All Events
           </li>
         </Link>
       </ul>

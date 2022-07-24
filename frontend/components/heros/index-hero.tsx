@@ -17,7 +17,7 @@ export const IndexHero: FC = () => {
             <Link href="./create">
               <button className={styles.button__btn}>Create Event</button>
             </Link>
-            <Link href="./buy">
+            <Link href="./events">
               <button className={styles.button__btnNbg}>Buy Ticket</button>
             </Link>
           </div>

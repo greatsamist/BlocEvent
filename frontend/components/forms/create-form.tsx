@@ -1,7 +1,7 @@
 import { FC, Fragment, useEffect, useMemo, useState } from "react";
 import { BlocAddress, blocContractABI } from "@lib";
 import { FileUploader } from "@components";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { MoonLoader } from "react-spinners";
 import { useContractWrite, useWaitForTransaction } from "wagmi";
@@ -49,6 +49,21 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     },
   });
 
+  // const formData = new FormData();
+  // formData.append("eventFile", files);
+
+  async function postRequest(data: CreationFormData) {
+    const res = await fetch("https://blockevents.herokuapp.com/events", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const resData = await res.json();
+    console.log(resData);
+  }
+
   const registerHandler = async (data: CreationFormData) => {
     if (isValid) {
       console.log(files);
@@ -57,6 +72,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
         await creation.writeAsync({
           args: [participantsNumber, ticketPrice],
         });
+        await postRequest(data);
       } catch (error) {
         return;
       }
@@ -75,7 +91,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     <Fragment>
       <div className={styles.container}>
         <div className={styles.head}>
-          <h1 className={styles.heading}>Event information</h1>
+          <h2 className={styles.heading}>Event information</h2>
         </div>
         <form className={styles.form} onSubmit={handleSubmit(registerHandler)}>
           {/* /* === eventName === */}
@@ -165,11 +181,10 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
               className={styles.inputContainer__input}
               id="eventDate"
               type="date"
-              value={format(new Date(), "yyyy-MM-dd")}
+              // value={format(new Date(), "yyyy-MM-dd")}
               {...register("eventDate", {
                 required: true,
                 minLength: 1,
-                maxLength: 32,
               })}
             />
             <label htmlFor="eventDate" className={styles.inputContainer__label}>
@@ -183,7 +198,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
               className={styles.inputContainer__input}
               id="startTime"
               type="time"
-              value={format(new Date(), "HH:mm")}
+              // value={format(new Date(), "HH:mm")}
               {...register("startTime", {
                 required: true,
               })}
@@ -199,7 +214,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
               className={styles.inputContainer__input}
               id="endTime"
               type="time"
-              value={format(new Date(600), "HH:mm")}
+              // value={format(new Date(), "HH:mm")}
               {...register("endTime", {
                 required: true,
               })}
@@ -209,33 +224,39 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
             </label>
           </div>
 
-          {/* /* === shortdesc === */}
+          {/* /* === shortDescription ===
           <div className={styles.inputContainer}>
             <textarea
               className={styles.inputContainer__input}
-              id="shortDesc"
-              {...register("shortDesc", {
+              id="shortDescription"
+              {...register("shortDescription", {
                 required: true,
                 minLength: 10,
               })}
             />
-            <label htmlFor="shortDesc" className={styles.inputContainer__label}>
+            <label
+              htmlFor="shortDescription"
+              className={styles.inputContainer__label}
+            >
               Give a brief description, make it catchy. Max 100 words
             </label>
-          </div>
+          </div> */}
 
-          {/* /* === desc === */}
+          {/* /* === description === */}
           <div className={styles.inputContainer}>
             <textarea
               className={styles.inputContainer__input}
-              id="desc"
-              {...register("desc", {
+              id="description"
+              {...register("description", {
                 required: true,
                 minLength: 1,
                 maxLength: 32,
               })}
             />
-            <label htmlFor="desc" className={styles.inputContainer__label}>
+            <label
+              htmlFor="description"
+              className={styles.inputContainer__label}
+            >
               Enter Description, explain in details
             </label>
           </div>
@@ -292,8 +313,7 @@ export interface CreationFormData {
   eventDate: string;
   startTime: string;
   endTime: string;
-  desc: string;
-  shortDesc: string;
+  description: string;
   ticketPrice: number;
   eventFile: File[];
 }

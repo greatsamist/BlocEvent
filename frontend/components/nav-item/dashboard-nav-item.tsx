@@ -31,14 +31,6 @@ export const DashboardNavItem: FC<DashboardNavItemProps> = (
               />
               Withdraw Earnings
             </li>
-            <li>
-              <Ticket
-                set="curved"
-                primaryColor="currentColor"
-                style={{ verticalAlign: "middle", marginRight: "8px" }}
-              />
-              Airdrop POAP
-            </li>
           </ul>
           <li onClick={() => setSec("AuctionTicket")}>
             <Ticket
@@ -63,6 +55,16 @@ export const DashboardNavItem: FC<DashboardNavItemProps> = (
             />
           </li>
 
+          <li className={styles.sub} onClick={() => setSec("poap")}>
+            <p>
+              <Image2
+                set="curved"
+                primaryColor="currentColor"
+                style={{ verticalAlign: "middle", marginRight: "8px" }}
+              />
+              Airdrop POAP
+            </p>
+          </li>
           <li className={styles.sub} onClick={() => setSec("poap")}>
             <p>
               <Image2
