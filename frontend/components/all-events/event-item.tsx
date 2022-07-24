@@ -6,7 +6,7 @@ import styles from "./event-item.module.scss";
 import type { TransactionReceipt } from "@ethersproject/providers";
 
 export const EventItem: FC<eventArr> = ({
-//   id,
+  //   id,
   eventName,
   organizers,
   eventFile,
@@ -35,8 +35,8 @@ export const EventItem: FC<eventArr> = ({
     wait: buyTicket.data?.wait,
     hash: buyTicket.data?.hash,
     onSuccess: async (data: TransactionReceipt) => {
-		console.log(data)
-	},
+      console.log(data);
+    },
   });
 
   const buyTicketHandler = async () => {
@@ -71,10 +71,10 @@ export const EventItem: FC<eventArr> = ({
           <img className={styles.card__img} src={image} alt="event image" />
           <div className={styles.card__content}>
             <h3>{eventName}</h3>
-            <h3>
+            <h5>
               Organized by: <span>{organizers}</span>
-            </h3>
-            <p>{description}</p>
+            </h5>
+            <p>Description: {description}</p>
             <p>Date: {eventDate}</p>
             <p>Start Time: {startTime}</p>
             <p>End Time: {endTime}</p>

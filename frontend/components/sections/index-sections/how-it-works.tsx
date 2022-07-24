@@ -23,36 +23,34 @@ export const HowItWorksSection: FC = () => {
           <div className={styles.content__row}>
             <div className={styles.content__header}>
               <Ticket set="curved" primaryColor="blueviolet" />
-              <h3>Create an event</h3>
+              <h3>Users can re-auction tickets</h3>
             </div>
             <p className={styles.content__para}>
-              Organizers of event can customize event details and set prices
-              also with also proper provision to track the statistics of each
-              event
+              Users can re-sell their tickets to others, incase unexpected
+              circumstances come up and they are unable to attend the event
             </p>
           </div>
 
           <div className={styles.content__row}>
             <div className={styles.content__header}>
               <Ticket set="curved" primaryColor="blueviolet" />
-              <h3>Create an event</h3>
+              <h3>Manage events</h3>
             </div>
             <p className={styles.content__para}>
-              Organizers of event can customize event details and set prices
-              also with also proper provision to track the statistics of each
-              event
+              Organizers can track their event tractions, and manage analytics
+              seamlessly
             </p>
           </div>
 
           <div className={styles.content__row}>
             <div className={styles.content__header}>
               <Ticket set="curved" primaryColor="blueviolet" />
-              <h3>Create an event</h3>
+              <h3>Airdrop NFT to attendee</h3>
             </div>
             <p className={styles.content__para}>
-              Organizers of event can customize event details and set prices
-              also with also proper provision to track the statistics of each
-              event
+              Organizers of event can send paop to there attendee with ease,
+              these nft can be token gated. Attendee address can also be
+              whitelisted for any use case the Organizers can think of
             </p>
           </div>
         </div>

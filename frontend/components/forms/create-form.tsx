@@ -49,9 +49,6 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     },
   });
 
-  // const formData = new FormData();
-  // formData.append("eventFile", files);
-
   async function postRequest(data: CreationFormData) {
     const res = await fetch("https://blockevents.herokuapp.com/events", {
       method: "POST",
@@ -66,13 +63,40 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
 
   const registerHandler = async (data: CreationFormData) => {
     if (isValid) {
+      console.log(data);
+      const {
+        eventName,
+        organizers,
+        eventType,
+        category,
+        eventDate,
+        startTime,
+        endTime,
+        participantsNumber,
+        description,
+        ticketPrice,
+      } = data;
+
       console.log(files);
-      const { participantsNumber, ticketPrice } = data;
+
+      const formData: any = new FormData();
+      formData.append("eventName", eventName);
+      formData.append("participantsNumber", participantsNumber);
+      formData.append("ticketPrice", ticketPrice);
+      formData.append("organizers", organizers);
+      formData.append("category", category);
+      formData.append("eventType", eventType);
+      formData.append("description", description);
+      formData.append("eventDate", eventDate);
+      formData.append("startTime", startTime);
+      formData.append("endTime", endTime);
+      formData.append("eventFile", files);
+      console.log(formData);
+      await postRequest(formData);
       try {
         await creation.writeAsync({
           args: [participantsNumber, ticketPrice],
         });
-        await postRequest(data);
       } catch (error) {
         return;
       }
@@ -155,7 +179,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
               })}
             />
             <label htmlFor="eventType" className={styles.inputContainer__label}>
-              Event Type (e.g online)
+              Event Type (e.g Virtual)
             </label>
           </div>
           {/* /* === category === */}
@@ -223,24 +247,6 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
               End Time
             </label>
           </div>
-
-          {/* /* === shortDescription ===
-          <div className={styles.inputContainer}>
-            <textarea
-              className={styles.inputContainer__input}
-              id="shortDescription"
-              {...register("shortDescription", {
-                required: true,
-                minLength: 10,
-              })}
-            />
-            <label
-              htmlFor="shortDescription"
-              className={styles.inputContainer__label}
-            >
-              Give a brief description, make it catchy. Max 100 words
-            </label>
-          </div> */}
 
           {/* /* === description === */}
           <div className={styles.inputContainer}>
