@@ -4,7 +4,6 @@ import compression from 'compression';
 import express from 'express';
 import * as dotenv from 'dotenv'
 import './fetch-polyfill.js';
-import Block from './src/block.js'
 import Table from './src/event.js';
 
 const app = express()
@@ -12,7 +11,7 @@ dotenv.config()
 
 
 const corsConfig= {
-    origin:process.env.NODE_ENV === 'production' ? ['http://localhost:3000/', 'http://localhost:3000']: "http://localhost:3000",
+    origin:process.env.NODE_ENV === 'production' ? ['https://blocevent.vercel.app', 'http://localhost:3000']: "http://localhost:3000",
     optionsSuccessStatus: 200,
     credentials: true
 
@@ -25,7 +24,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(compression());
 
 
-app.use('/block', Block);
 app.use('/events', Table)
 
 //Catch 404 and forard to error handler 
