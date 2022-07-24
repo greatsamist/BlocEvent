@@ -6,25 +6,27 @@ export const EventList: FC<eventDataProps> = ({ events }: eventDataProps) => {
   console.log(events);
   return (
     <Fragment>
-      <ul className={styles.list}>
-        {events.map((event) => (
-          <EventItem
-            key={event.id}
-            id={event.id}
-            eventName={event.eventName}
-            organizers={event.organizers}
-            participantsNumber={event.participantsNumber}
-            eventType={event.eventType}
-            category={event.category}
-            eventDate={event.eventDate}
-            startTime={event.startTime}
-            endTime={event.endTime}
-            description={event.description}
-            ticketPrice={event.ticketPrice}
-            eventFile={event.eventFile}
-          />
-        ))}
-      </ul>
+      <div className={styles.container}>
+        <ul className={styles.list}>
+          {events.map((event) => (
+            <EventItem
+              key={event.id}
+              id={event.id}
+              eventName={event.eventName}
+              organizers={event.organizers}
+              participantsNumber={event.participantsNumber}
+              eventType={event.eventType}
+              category={event.category}
+              eventDate={event.eventDate}
+              startTime={event.startTime}
+              endTime={event.endTime}
+              description={event.description}
+              ticketPrice={event.ticketPrice}
+              eventFile={event.eventFile}
+            />
+          ))}
+        </ul>
+      </div>
     </Fragment>
   );
 };

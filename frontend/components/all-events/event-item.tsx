@@ -1,4 +1,5 @@
 import { FC, Fragment } from "react";
+import styles from "./event-item.module.scss";
 
 export const EventItem: FC<eventArr> = ({
   id,
@@ -10,10 +11,12 @@ export const EventItem: FC<eventArr> = ({
 
   return (
     <Fragment>
-      <li>{id}</li>
-      <li>{eventName}</li>
-      <li>{organizers}</li>
-      <img src={image} alt="event image" />
+     
+        <li className={styles.list}>{id}</li>
+        <li>{eventName}</li>
+        <li>{organizers}</li>
+        <img src={image} alt="event image" />
+      
     </Fragment>
   );
 };
