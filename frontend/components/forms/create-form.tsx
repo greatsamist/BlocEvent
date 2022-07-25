@@ -43,12 +43,9 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
   });
 
   async function postRequest(formData: any) {
-    const res = await fetch("https://blocevent.herokuapp.com/event", {
+    const res = await fetch("https://blockevents.herokuapp.com/events", {
       method: "POST",
       body: formData,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
     });
     const resData = await res.json();
     console.log(resData);

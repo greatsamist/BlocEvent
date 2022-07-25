@@ -94,15 +94,21 @@
 
 @media only screen and (max-width: 553px) {
   .nav {
+    &__home {
+      margin-right: 0;
+    }
+    &__homeActive {
+      margin-right: 0;
+    }
+    &__li {
+      font-size: 1.4rem;
+      margin: 0;
+    }
     & ul {
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 1rem;
-      & li {
-        font-size: 1.4rem;
-        margin: auto;
-      }
     }
   }
 }
