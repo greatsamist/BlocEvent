@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useMemo, useState } from "react";
+import { FC, Fragment, useMemo, useState } from "react";
 import { BlocAddress, blocContractABI } from "@lib";
 import { FileUploader } from "@components";
 // import { format } from "date-fns";
@@ -13,13 +13,6 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
 
   const [errorReason, setErrorReason] = useState<string | undefined>(undefined);
   const [files, setFiles] = useState<File[] | undefined>(undefined);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      errorReason && setErrorReason(undefined);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [errorReason]);
 
   const {
     register,
@@ -49,12 +42,12 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     },
   });
 
-  async function postRequest(data: CreationFormData) {
+  async function postRequest(formData: any) {
     const res = await fetch("https://blockevents.herokuapp.com/events", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: formData,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
     });
     const resData = await res.json();
@@ -77,26 +70,26 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
         ticketPrice,
       } = data;
 
-      console.log(files);
+      console.log(files?.[0]);
 
       const formData: any = new FormData();
       formData.append("eventName", eventName);
-      formData.append("participantsNumber", participantsNumber);
-      formData.append("ticketPrice", ticketPrice);
-      formData.append("organizers", organizers);
-      formData.append("category", category);
       formData.append("eventType", eventType);
-      formData.append("description", description);
+      formData.append("category", category);
       formData.append("eventDate", eventDate);
       formData.append("startTime", startTime);
       formData.append("endTime", endTime);
-      formData.append("eventFile", files);
+      formData.append("description", description);
+      formData.append("organizers", organizers);
+      formData.append("participantsNumber", participantsNumber);
+      formData.append("ticketPrice", ticketPrice);
+      formData.append("image", files?.[0]);
       console.log(formData);
-      await postRequest(formData);
       try {
-        await creation.writeAsync({
-          args: [participantsNumber, ticketPrice],
-        });
+        // await creation.writeAsync({
+        //   args: [participantsNumber, ticketPrice],
+        // });
+        await postRequest(formData);
       } catch (error) {
         return;
       }
@@ -321,5 +314,5 @@ export interface CreationFormData {
   endTime: string;
   description: string;
   ticketPrice: number;
-  eventFile: File[];
+  image: File[];
 }
