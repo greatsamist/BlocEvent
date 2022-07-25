@@ -43,7 +43,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
   });
 
   async function postRequest(formData: any) {
-    const res = await fetch("https://blockevents.herokuapp.com/events", {
+    const res = await fetch("https://blocevent.herokuapp.com/event", {
       method: "POST",
       body: formData,
       headers: {
@@ -86,9 +86,9 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
       formData.append("image", files?.[0]);
       console.log(formData);
       try {
-        // await creation.writeAsync({
-        //   args: [participantsNumber, ticketPrice],
-        // });
+        await creation.writeAsync({
+          args: [participantsNumber, ticketPrice],
+        });
         await postRequest(formData);
       } catch (error) {
         return;
