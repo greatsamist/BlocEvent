@@ -68,7 +68,9 @@ export const EventItem: FC<eventArr> = ({
     <Fragment>
       <li>
         <div className={styles.card}>
-          <img className={styles.card__img} src={image} alt="event image" />
+          <div className={styles.card__image}>
+            <img className={styles.card__img} src={image} alt="event image" />
+          </div>
           <div className={styles.card__content}>
             <h3>{eventName}</h3>
             <h5>

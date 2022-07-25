@@ -18,7 +18,7 @@ export const CreateForm: FC<CreateFormProps> = (props: CreateFormProps) => {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm<CreationFormData>({ mode: "onChange" });
+  } = useForm<CreationFormData>({ mode: "onSubmit" });
 
   const creation = useContractWrite({
     addressOrName: BlocAddress,
